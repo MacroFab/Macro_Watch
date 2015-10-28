@@ -1167,7 +1167,9 @@ design rules under a new name.</description>
 <attribute name="DNAME" value="Parker Dillmann" x="6.096" y="4.572" size="0.8128" layer="22" font="vector" rot="MR0" display="off"/>
 <attribute name="DRAWING_NAME" x="1.778" y="12.446" size="0.8128" layer="21" font="vector" ratio="16" rot="R90"/>
 </element>
-<element name="BATT1" library="MF_Connectors" package="BAT-HLD-001" value="BAT-HLD-001" x="13.335" y="19.177" rot="MR0"/>
+<element name="BATT1" library="MF_Connectors" package="BAT-HLD-001" value="BAT-HLD-001" x="13.335" y="19.177" smashed="yes" rot="MR0">
+<attribute name="NAME" x="26.035" y="28.575" size="1.016" layer="26" font="vector" ratio="16" rot="MR0"/>
+</element>
 <element name="C1" library="MF_Passives" package="C0603" value="1uF" x="5.842" y="25.908" smashed="yes">
 <attribute name="TOLERANCE" value="N/A" x="36.322" y="-19.812" size="1.778" layer="27" display="off"/>
 <attribute name="MFG#" value="N/A" x="36.322" y="-19.812" size="1.778" layer="27" display="off"/>
