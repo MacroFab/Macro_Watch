@@ -10,7 +10,7 @@ This repository contains all the documentation and instructions needed to build 
 More info on assembly will come soon.
 
 ***
-**Instructions on how to use the Macro_Watch**
+**Instructions on how to read the Macro_Watch**
 
 The Macro_Watch has 11 LEDs. Four LEDs for the Hour (H1 - H4), Six LEDs for the Minute (M1 - M6), and a single Seconds LED for timing purposes. This guide will not go into how to read binary but a good guide can be found [here](http://www.wikihow.com/Read-Binary). Pressing the switch on the front will lit up the LEDs for 5 seconds to allow reading of the time. Holding the switch will advance the time to allow setting the current time. There is no AM/PM indicator on the watch. The SEC LED can be repurposed for AM/PM use or the user can look outside and see if the sun is out. 
 
@@ -31,7 +31,7 @@ The LEDs represent the following numbers. The Seconds LED (SEC on the PCB) blink
 
 <a href="Example on how to read the Macro_Watch."><img src="https://github.com/MacroFab/Macro_Watch/blob/master/Example_Binary_Reading.png" width="400"></a>
 
-The idea is to take the LEDs that are lit up and then add up the numbers they represent. 
+The idea is to take the LEDs that are lit up and then add up the numbers they represent. If H3 and H1 LED are lit up that will be 4 + 1 = 5 so it is the 5th hour. 
 
 ***
 **Theory of operation**
@@ -57,8 +57,8 @@ This project is under the [Creative Commons Attribution-ShareAlike 4.0 Internati
 Designed by:   
 Parker Dillmann  
 
-Software by: 
-Parker Dillmann
+Software by:   
+Parker Dillmann  
 
 ***
 
