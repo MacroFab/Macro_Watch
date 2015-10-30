@@ -12,7 +12,7 @@ More info on assembly will come soon.
 ***
 **Instructions on how to use the Macro_Watch**
 
-The Macro_Watch has 11 LEDs. Four LEDs for the Hour (H1 - H4), Six LEDs for the Minute (M1 - M6), and a single Seconds LED for timing purposes. This guide will not go into how to read binary but a good guide can be found [here](http://www.wikihow.com/Read-Binary). 
+The Macro_Watch has 11 LEDs. Four LEDs for the Hour (H1 - H4), Six LEDs for the Minute (M1 - M6), and a single Seconds LED for timing purposes. This guide will not go into how to read binary but a good guide can be found [here](http://www.wikihow.com/Read-Binary). Pressing the switch on the front will lit up the LEDs for 5 seconds to allow reading of the time. Holding the switch will advance the time to allow setting the current time. There is no AM/PM indicator on the watch. The SEC LED can be repurposed for AM/PM use or the user can look outside and see if the sun is out. 
 
 The LEDs represent the following numbers. The Seconds LED (SEC on the PCB) blinks every second. 
 
@@ -27,12 +27,16 @@ The LEDs represent the following numbers. The Seconds LED (SEC on the PCB) blink
 | H1 | 1 Hour | M2 | 2 Minutes |
 | SEC | Second Blinker | M1 | 1 Minute |
 
-<a href="Example on how to read the Macro_Watch."><img src="https://github.com/MacroFab/Macro_Watch/blob/master/Example_Binary_Reading.png" width="480"></a>
+***
+
+<a href="Example on how to read the Macro_Watch."><img src="https://github.com/MacroFab/Macro_Watch/blob/master/Example_Binary_Reading.png" width="400"></a>
+
+The idea is to take the LEDs that are lit up and then add up the numbers they represent. 
 
 ***
 **Theory of operation**
 
-More info about the timing will be added soon.
+More info about the timing and how the code works will be added soon.
 
 ***
 **License Information**
@@ -40,6 +44,7 @@ More info about the timing will be added soon.
 This project is under the [Creative Commons Attribution-ShareAlike 4.0 International License](LICENSE.md). This project is provided with no warranty and should be used at your own risk. 
 
 ***
+**Directory listing of the repository**
 
 | Directory | Description |
 |---|---|
@@ -47,6 +52,16 @@ This project is under the [Creative Commons Attribution-ShareAlike 4.0 Internati
 | Software | Has all the firmware that needs to be loaded onto the Macro_Watch. Written in C for MPLAB X IDE V3.10. |
 
 ***
+**Credits**
+
+Designed by:   
+Parker Dillmann  
+
+Software by: 
+Parker Dillmann
+
+***
+
 
 
 
