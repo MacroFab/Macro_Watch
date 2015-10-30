@@ -16,7 +16,7 @@ The Macro_Watch has 11 LEDs. Four LEDs for the Hour (H1 - H4), Six LEDs for the 
 
 The LEDs represent the following numbers. The Seconds LED (SEC on the PCB) blinks every second. 
 
-** Table of the LED layout on the Macro_Watch
+** Table of the LED layout on the Macro_Watch**
 | LED Identifier | Number | LED Identifier | Number
 |---|---|---|---|
 | N/A | N/A | M6 | 32 Minutes |
