@@ -16,7 +16,7 @@ The Macro_Watch has 11 LEDs. Four LEDs for the Hour (H1 - H4), Six LEDs for the 
 
 The LEDs represent the following numbers. The Seconds LED (SEC on the PCB) blinks every second. 
 
-** Table of the LED layout on the Macro_Watch**
+**Table of the LED layout on the Macro_Watch**
 
 | LED Identifier | Number | LED Identifier | Number
 |---|---|---|---|
@@ -27,7 +27,7 @@ The LEDs represent the following numbers. The Seconds LED (SEC on the PCB) blink
 | H1 | 1 Hour | M2 | 2 Minutes |
 | SEC | Second Blinker | M1 | 1 Minute |
 
-![Example on reading the Macro_Watch.](Example_Binary_Reading.png)
+![Example on reading the Macro_Watch.](<img src="Example_Binary_Reading.png" width="480">)
 
 ***
 **Theory of operation**
