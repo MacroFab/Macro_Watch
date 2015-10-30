@@ -8,4 +8,7 @@
 ***
 ![Schematic Image](Schematic.png)
 
+***
+![Gerber Top Drawing](MacroWatch_gerber.png)
+
 Files are for Eagle V6.0+. Gerber files can be found in the camfiles directory. See main directory for licensing. 
