@@ -27,7 +27,7 @@ The LEDs represent the following numbers. The Seconds LED (SEC on the PCB) blink
 | H1 | 1 Hour | M2 | 2 Minutes |
 | SEC | Second Blinker | M1 | 1 Minute |
 
-![Example on reading the Macro_Watch.](<img src="Example_Binary_Reading.png" width="480">)
+<a href="Example on how to read the Macro_Watch."><img src="https://github.com/MacroFab/Macro_Watch/blob/master/Example_Binary_Reading.png" width="480"></a>
 
 ***
 **Theory of operation**
