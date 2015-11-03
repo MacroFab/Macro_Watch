@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <executable name="dist/default/production\MacroWatch.X.production.hex">
+    <memory name="program">
+      <units>words</units>
+      <length>1024</length>
+      <used>544</used>
+      <free>480</free>
+    </memory>
+    <memory name="data">
+      <units>bytes</units>
+      <length>68</length>
+      <used>21</used>
+      <free>47</free>
+    </memory>
+  </executable>
+</project>

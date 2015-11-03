@@ -1,0 +1,96 @@
+[p LITE_MODE AUTOSTATIC PIC12 PICREGULAR PIC12E PIC12IE PIC12COM ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F527 ]
+[d frameptr 6 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"60 C:\Users\MacroFab_00\Documents\GitHub\Macro_Watch\Software\MacroWatch.X\main.c
+[v _main main `(v  1 e 0 0 ]
+"205
+[v _TEST_LED_PATTERN TEST_LED_PATTERN `(v  1 e 0 0 ]
+"220
+[v _isr isr `II(v  1 e 0 0 ]
+"319 C:\Program Files (x86)\Microchip\xc8\v1.34\include\pic16f527.h
+[v _PORTB PORTB `VEuc  1 e 1 @7 ]
+"366
+[v _PORTC PORTC `VEuc  1 e 1 @8 ]
+"763
+[v _CM1CON0 CM1CON0 `VEuc  1 e 1 @39 ]
+"824
+[v _CM2CON0 CM2CON0 `VEuc  1 e 1 @40 ]
+"949
+[v _ANSEL ANSEL `VEuc  1 e 1 @42 ]
+"1234
+[v _OPTION OPTION `VEWuc  1 e 1 @0 ]
+"1240
+[v _TRISB TRISB `VEWuc  1 e 1 @7 ]
+"1243
+[v _TRISC TRISC `VEWuc  1 e 1 @8 ]
+"1359
+[v _GIE GIE `VEb  1 e 0 @88 ]
+"1387
+[v _RB4 RB4 `VEb  1 e 0 @60 ]
+"1389
+[v _RB5 RB5 `VEb  1 e 0 @61 ]
+"1391
+[v _RB6 RB6 `VEb  1 e 0 @62 ]
+"1393
+[v _RB7 RB7 `VEb  1 e 0 @63 ]
+"1395
+[v _RC0 RC0 `VEb  1 e 0 @64 ]
+"1397
+[v _RC1 RC1 `VEb  1 e 0 @65 ]
+"1399
+[v _RC2 RC2 `VEb  1 e 0 @66 ]
+"1401
+[v _RC3 RC3 `VEb  1 e 0 @67 ]
+"1403
+[v _RC4 RC4 `VEb  1 e 0 @68 ]
+"1405
+[v _RC5 RC5 `VEb  1 e 0 @69 ]
+"1407
+[v _RC6 RC6 `VEb  1 e 0 @70 ]
+"1409
+[v _RC7 RC7 `VEb  1 e 0 @71 ]
+"1413
+[v _T0IE T0IE `VEb  1 e 0 @813 ]
+"1415
+[v _T0IF T0IF `VEb  1 e 0 @93 ]
+"48 C:\Users\MacroFab_00\Documents\GitHub\Macro_Watch\Software\MacroWatch.X\main.c
+[v _HOUR HOUR `uc  1 e 1 0 ]
+"49
+[v _MIN MIN `uc  1 e 1 0 ]
+"50
+[v _SEC SEC `uc  1 e 1 0 ]
+"51
+[v _INTCNT INTCNT `i  1 e 2 0 ]
+"53
+[v _Disp_timeout Disp_timeout `uc  1 e 1 0 ]
+"54
+[v _Change_time Change_time `uc  1 e 1 0 ]
+"56
+[v _BUTT_action BUTT_action `uc  1 e 1 0 ]
+"58
+[v _STATE STATE `uc  1 e 1 0 ]
+"60
+[v _main main `(v  1 e 0 0 ]
+{
+"203
+} 0
+"205
+[v _TEST_LED_PATTERN TEST_LED_PATTERN `(v  1 e 0 0 ]
+{
+"209
+[v TEST_LED_PATTERN@i i `i  1 a 2 3 ]
+"207
+[v TEST_LED_PATTERN@mask mask `uc  1 a 1 5 ]
+"218
+} 0
+"220
+[v _isr isr `II(v  1 e 0 0 ]
+{
+"245
+} 0
