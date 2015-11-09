@@ -730,16 +730,19 @@ extern __bit __timeout;
 #pragma config BOREN = OFF
 #pragma config DRTEN = OFF
 
-# 46
+# 48
 void TEST_LED_PATTERN(void);
+void delay_ms(int);
 
-char HOUR = 12;
-char MIN = 12;
+char HOUR = 3;
+char MIN = 6;
 char SEC = 0;
 int INTCNT = 0;
 
 char Disp_timeout = 0;
 char Change_time = 0;
+int ADVCLKDELAY = 0;
+int ADVCLKCNT = 0;
 
 char BUTT_action = 0;
 
@@ -751,8 +754,10 @@ CM1CON0 = 0x00;
 CM2CON0 = 0x00;
 OPTION = 0b11001000;
 ANSEL = 0x00;
+PORTA = 0x00;
 PORTB = 0x00;
 PORTC = 0x00;
+TRISA = 0x00;
 TRISB = 0x00;
 TRISC = 0x80;
 
@@ -778,6 +783,7 @@ BUTT_action = 1;
 else
 {
 STATE = 0;
+BUTT_action = 0;
 }
 break;
 
@@ -807,10 +813,10 @@ break;
 
 case 2:
 
-RB4 = HOUR & 0b00000001;
-RB5 = (HOUR >> 1) & 0b00000001;
-RB6 = (HOUR >> 2) & 0b00000001;
-RB7 = (HOUR >> 3) & 0b00000001;
+RB7 = HOUR & 0b00000001;
+RB6 = (HOUR >> 1) & 0b00000001;
+RB5 = (HOUR >> 2) & 0b00000001;
+RB4 = (HOUR >> 3) & 0b00000001;
 
 RC0 = MIN & 0b00000001;
 RC1 = (MIN >> 1) & 0b00000001;
@@ -821,19 +827,34 @@ RC5 = (MIN >> 5) & 0b00000001;
 
 RC6 = SEC & 0b00000001;
 
-if(RC7 == 1)
-{
-BUTT_action = 0;
-}
+
 
 if(Disp_timeout == SEC)
 {
 STATE = 0;
+BUTT_action == BUTT_action;
 }
 
-if(Change_time == SEC && RC7 == 0 && BUTT_action == 1)
-{
 
+else if(RC7 == 0 && BUTT_action == 0)
+{
+STATE = 1;
+BUTT_action = 1;
+}
+
+
+else if(Change_time == SEC && RC7 == 0 && BUTT_action == 1)
+{
+STATE = 3;
+BUTT_action == BUTT_action;
+ADVCLKDELAY = 50;
+ADVCLKCNT = 2;
+}
+
+else if(RC7 == 1 && BUTT_action == 1)
+{
+STATE = 2;
+BUTT_action = 0;
 }
 
 break;
@@ -841,6 +862,7 @@ break;
 
 case 3:
 GIE = 0;
+
 
 if(RC7 == 0)
 {
@@ -855,17 +877,25 @@ if(HOUR == 13)
 HOUR = 1;
 }
 }
+ADVCLKCNT = ADVCLKCNT - 1;
+if(ADVCLKCNT == 0 && ADVCLKDELAY > 5)
+{
+ADVCLKCNT = 3;
+ADVCLKDELAY = ADVCLKDELAY - 5;
 }
+
+}
+
 else if(RC7 == 1)
 {
 GIE = 1;
-STATE = 2;
+STATE = 1;
 }
 
-RB4 = HOUR & 0b00000001;
-RB5 = (HOUR >> 1) & 0b00000001;
-RB6 = (HOUR >> 2) & 0b00000001;
-RB7 = (HOUR >> 3) & 0b00000001;
+RB7 = HOUR & 0b00000001;
+RB6 = (HOUR >> 1) & 0b00000001;
+RB5 = (HOUR >> 2) & 0b00000001;
+RB4 = (HOUR >> 3) & 0b00000001;
 
 RC0 = MIN & 0b00000001;
 RC1 = (MIN >> 1) & 0b00000001;
@@ -874,7 +904,7 @@ RC3 = (MIN >> 3) & 0b00000001;
 RC4 = (MIN >> 4) & 0b00000001;
 RC5 = (MIN >> 5) & 0b00000001;
 
-_delay((unsigned long)((150)*(32768/4000.0)));
+delay_ms(ADVCLKDELAY);
 
 break;
 
@@ -892,6 +922,7 @@ return;
 
 void TEST_LED_PATTERN(void)
 {
+GIE = 0;
 char mask = 0x01;
 
 for(int i = 0; i < 8; i++)
@@ -901,12 +932,22 @@ PORTC = mask;
 mask = mask << 1;
 _delay((unsigned long)((500)*(32768/4000.0)));
 }
-
+GIE = 1;
 return;
+}
+
+void delay_ms(int milliseconds)
+{
+while(milliseconds > 0)
+{
+_delay((unsigned long)((10)*(32768/4000.0)));
+milliseconds--;
+}
 }
 
 void interrupt isr(void)
 {
+RA2 = 1;
 INTCNT = INTCNT + 1;
 if(INTCNT == 32)
 {
@@ -928,6 +969,7 @@ HOUR = 1;
 }
 }
 }
+RA2 = 0;
 T0IF = 0;
 return;
 }

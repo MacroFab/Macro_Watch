@@ -27,10 +27,10 @@
 #pragma config BOREN = OFF      // Brown-out Reset Enable (BOR Enabled)
 #pragma config DRTEN = OFF      // Device Reset Timer Enable (DRT Disabled)
 
-#define HOURLED_0 RB4
-#define HOURLED_1 RB5
-#define HOURLED_2 RB6
-#define HOURLED_3 RB7
+#define HOURLED_0 RB7
+#define HOURLED_1 RB6
+#define HOURLED_2 RB5
+#define HOURLED_3 RB4
 
 #define MINLED_0  RC0
 #define MINLED_1  RC1
@@ -43,15 +43,20 @@
 
 #define SW        RC7
 
-void TEST_LED_PATTERN(void);
+#define ISR       RA2
 
-char HOUR   = 12;
-char MIN    = 12;
+void TEST_LED_PATTERN(void);
+void delay_ms(int);
+
+char HOUR   = 3;
+char MIN    = 6;
 char SEC    = 0;
 int INTCNT  = 0;
 
 char Disp_timeout = 0;
 char Change_time  = 0;
+int  ADVCLKDELAY  = 0;      //How long till the minute counter is increased when changing the time.
+int  ADVCLKCNT    = 0;      //How long till the value of the ADVCLKDELAY changes.
 
 char BUTT_action = 0;
 
@@ -59,12 +64,14 @@ char STATE = 0;
 
 void main(void) {
         
-    CM1CON0 = 0x00; // <- this mother fucker right here.
+    CM1CON0 = 0x00; // These two registers must be zeroed out at the start to turn off comparators. 
     CM2CON0 = 0x00;
     OPTION = 0b11001000;
     ANSEL = 0x00;
+    PORTA = 0x00;
     PORTB = 0x00;
     PORTC = 0x00;
+    TRISA = 0x00;
     TRISB = 0x00;
     TRISC = 0x80;
 
@@ -90,6 +97,7 @@ void main(void) {
                 else
                 {
                     STATE = 0;
+                    BUTT_action = 0;
                 }
                 break;
                 
@@ -105,7 +113,7 @@ void main(void) {
                 }
                 
                 Change_time = SEC;
-                Change_time = Change_time + 3;
+                Change_time = Change_time + 3; 
                 
                 if(Change_time >= 60)
                 {
@@ -133,19 +141,34 @@ void main(void) {
                 
                 SECOUT    = SEC & 0b00000001; 
                 
-                if(SW == 1)
-                {
-                    BUTT_action = 0;                    
-                }
                 
+                //Display time out. Time to turn off display.
                 if(Disp_timeout == SEC)
                 {
                     STATE = 0;
+                    BUTT_action == BUTT_action;
                 }
                 
-                if(Change_time == SEC && SW == 0 && BUTT_action == 1)
+                //Button is pressed again. Reset display time and set button action flag.
+                else if(SW == 0 && BUTT_action == 0)
+                {
+                    STATE = 1;
+                    BUTT_action = 1;
+                }
+                
+                //Button is held for 3 seconds. Time to hack time!
+                else if(Change_time == SEC && SW == 0 && BUTT_action == 1)
                 {
                     STATE = 3;
+                    BUTT_action == BUTT_action;
+                    ADVCLKDELAY = 50;
+                    ADVCLKCNT   = 2;
+                }
+                //Button has stopped being pressed. Clear button action flag.
+                else if(SW == 1 && BUTT_action == 1)
+                {
+                    STATE = 2;
+                    BUTT_action = 0; 
                 }
                 
                 break;
@@ -154,6 +177,7 @@ void main(void) {
             case 3:
                 GIE = 0;
                 
+                //Switch held. Increase time.
                 if(SW == 0)
                 {
                     SEC = 0;
@@ -167,11 +191,20 @@ void main(void) {
                             HOUR = 1;   
                         }   
                     }
-                }     
+                    //Calculate "acceleration" of time hacking. 
+                    ADVCLKCNT = ADVCLKCNT - 1;
+                    if(ADVCLKCNT == 0 && ADVCLKDELAY > 5)
+                    {
+                        ADVCLKCNT = 3;
+                        ADVCLKDELAY = ADVCLKDELAY - 5;
+                    }
+                   
+                }    
+                //Switch released. Recalculate on time. 
                 else if(SW == 1)
                 {
                     GIE = 1;
-                    STATE = 2;
+                    STATE = 1;
                 }
                 
                 HOURLED_0 = HOUR & 0b00000001;
@@ -186,10 +219,12 @@ void main(void) {
                 MINLED_4  = (MIN >> 4) & 0b00000001; 
                 MINLED_5  = (MIN >> 5) & 0b00000001; 
                 
-                __delay_ms(150);
+                delay_ms(ADVCLKDELAY);
 
                 break;
+            
                 
+            //Never supposed to get here but just encase of cosmic radiation flipping a bit.
             default:
                 
                 STATE = 0;
@@ -204,6 +239,7 @@ void main(void) {
 
 void TEST_LED_PATTERN(void)
 {
+    GIE = 0;
     char mask = 0x01;
     
     for(int i = 0; i < 8; i++)
@@ -213,12 +249,22 @@ void TEST_LED_PATTERN(void)
         mask = mask << 1;
         __delay_ms(500);
     }
-    
+    GIE = 1;
     return;
 }
+ 
+void delay_ms(int milliseconds)
+ {
+   while(milliseconds > 0)
+   {
+       __delay_ms(10);
+      milliseconds--;
+    }
+ }
 
 void interrupt isr(void)
 {
+    ISR = 1;
     INTCNT = INTCNT + 1;
     if(INTCNT == 32)
     {  
@@ -240,6 +286,7 @@ void interrupt isr(void)
             } 
         }
     }
+    ISR = 0;
     T0IF = 0;
     return;
 }

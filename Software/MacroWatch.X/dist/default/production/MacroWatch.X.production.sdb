@@ -7,13 +7,17 @@
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
 "86 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftadd.c
 [v ___ftadd __ftadd `(f  1 e 3 0 ]
-"60 C:\Users\MacroFab_00\Documents\GitHub\Macro_Watch\Software\MacroWatch.X\main.c
+"65 C:\Users\MacroFab_00\Documents\GitHub\Macro_Watch\Software\MacroWatch.X\main.c
 [v _main main `(v  1 e 0 0 ]
-"205
+"237
 [v _TEST_LED_PATTERN TEST_LED_PATTERN `(v  1 e 0 0 ]
-"220
+"253
+[v _delay_ms delay_ms `(v  1 e 0 0 ]
+"262
 [v _isr isr `II(v  1 e 0 0 ]
-"319 C:\Program Files (x86)\Microchip\xc8\v1.34\include\pic16f527.h
+"262 C:\Program Files (x86)\Microchip\xc8\v1.34\include\pic16f527.h
+[v _PORTA PORTA `VEuc  1 e 1 @6 ]
+"319
 [v _PORTB PORTB `VEuc  1 e 1 @7 ]
 "366
 [v _PORTC PORTC `VEuc  1 e 1 @8 ]
@@ -25,12 +29,16 @@
 [v _ANSEL ANSEL `VEuc  1 e 1 @42 ]
 "1234
 [v _OPTION OPTION `VEWuc  1 e 1 @0 ]
+"1237
+[v _TRISA TRISA `VEWuc  1 e 1 @6 ]
 "1240
 [v _TRISB TRISB `VEWuc  1 e 1 @7 ]
 "1243
 [v _TRISC TRISC `VEWuc  1 e 1 @8 ]
 "1359
 [v _GIE GIE `VEb  1 e 0 @88 ]
+"1375
+[v _RA2 RA2 `VEb  1 e 0 @50 ]
 "1387
 [v _RB4 RB4 `VEb  1 e 0 @60 ]
 "1389
@@ -59,38 +67,48 @@
 [v _T0IE T0IE `VEb  1 e 0 @813 ]
 "1415
 [v _T0IF T0IF `VEb  1 e 0 @93 ]
-"48 C:\Users\MacroFab_00\Documents\GitHub\Macro_Watch\Software\MacroWatch.X\main.c
+"51 C:\Users\MacroFab_00\Documents\GitHub\Macro_Watch\Software\MacroWatch.X\main.c
 [v _HOUR HOUR `uc  1 e 1 0 ]
-"49
+"52
 [v _MIN MIN `uc  1 e 1 0 ]
-"50
-[v _SEC SEC `uc  1 e 1 0 ]
-"51
-[v _INTCNT INTCNT `i  1 e 2 0 ]
 "53
-[v _Disp_timeout Disp_timeout `uc  1 e 1 0 ]
+[v _SEC SEC `uc  1 e 1 0 ]
 "54
-[v _Change_time Change_time `uc  1 e 1 0 ]
+[v _INTCNT INTCNT `i  1 e 2 0 ]
 "56
-[v _BUTT_action BUTT_action `uc  1 e 1 0 ]
+[v _Disp_timeout Disp_timeout `uc  1 e 1 0 ]
+"57
+[v _Change_time Change_time `uc  1 e 1 0 ]
 "58
+[v _ADVCLKDELAY ADVCLKDELAY `i  1 e 2 0 ]
+"59
+[v _ADVCLKCNT ADVCLKCNT `i  1 e 2 0 ]
+"61
+[v _BUTT_action BUTT_action `uc  1 e 1 0 ]
+"63
 [v _STATE STATE `uc  1 e 1 0 ]
-"60
+"65
 [v _main main `(v  1 e 0 0 ]
 {
-"203
+"235
 } 0
-"205
+"253
+[v _delay_ms delay_ms `(v  1 e 0 0 ]
+{
+[v delay_ms@milliseconds milliseconds `i  1 p 2 1 ]
+"260
+} 0
+"237
 [v _TEST_LED_PATTERN TEST_LED_PATTERN `(v  1 e 0 0 ]
 {
-"209
+"242
 [v TEST_LED_PATTERN@i i `i  1 a 2 3 ]
-"207
+"240
 [v TEST_LED_PATTERN@mask mask `uc  1 a 1 5 ]
-"218
+"251
 } 0
-"220
+"262
 [v _isr isr `II(v  1 e 0 0 ]
 {
-"245
+"289
 } 0
