@@ -9,7 +9,17 @@ This repository contains all the documentation and instructions needed to build 
 ***
 **How to assemble the Macro_Watch Kit**
 
-More info on assembly will come soon.
+To attach the wrist strap to the Macro_Watch follow the pictures below.
+
+![Macro_Watch Kit](MW_Assembly_Parts.png)
+
+![Step 1](MW_Assembly_Step_1.png)
+
+![Step 2](MW_Assembly_Step_2.png)
+
+![Step 3](MW_Assembly_Step_3.png)
+
+![Step 4](MW_Assembly_Step_4.png)
 
 ***
 **Instructions on how to read and use the Macro_Watch**
