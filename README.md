@@ -2,7 +2,9 @@
 ***
 **Low cost, binary watch based off the PIC16F527 MCU for promotional purposes at MacroFab, INC.**
 
-This repository contains all the documentation and instructions needed to build a Macro_Watch. The Macro_Watch is a binary style watch based off the [PIC16F527](http://ww1.microchip.com/downloads/en/DeviceDoc/41652A.pdf). It is designed to be low cost and easy to manufacture. The watch runs off of a single CR2032. The PIC16F527 is running in "LP" (Low Power Crystal Mode) which has an average power draw of ~16uA @ the 3.0V the watch runs at. The crystal is a 32.768kHz which allows for a clean conversion to a 1Hz signal for timekeeping. The Macro_Watch is designed to be mounted on an ESD wrist band. 
+This repository contains all the documentation and instructions needed to build a Macro_Watch. The Macro_Watch is a binary style watch based off the [PIC16F527](http://ww1.microchip.com/downloads/en/DeviceDoc/41652A.pdf). It is designed to be low cost and easy to manufacture. The watch runs off of a single CR2032. The PIC16F527 is running in "LP" (Low Power Crystal Mode) which has an average power draw of ~15.8uA @ the 3.0V the watch runs at. The crystal is a 32.768kHz which allows for a clean conversion to a 1Hz signal for timekeeping. The Macro_Watch is designed to be mounted on an ESD wrist band. 
+
+![Finished Macro_Watch](Finished_Watch.png)
 
 ***
 **How to assemble the Macro_Watch Kit**
@@ -10,9 +12,9 @@ This repository contains all the documentation and instructions needed to build 
 More info on assembly will come soon.
 
 ***
-**Instructions on how to read the Macro_Watch**
+**Instructions on how to read and use the Macro_Watch**
 
-The Macro_Watch has 11 LEDs. Four LEDs for the Hour (H1 - H4), Six LEDs for the Minute (M1 - M6), and a single Seconds LED for timing purposes. This guide will not go into how to read binary but a good guide can be found [here](http://www.wikihow.com/Read-Binary). Pressing the switch on the front will lit up the LEDs for 5 seconds to allow reading of the time. Holding the switch will advance the time to allow setting the current time. There is no AM/PM indicator on the watch. The SEC LED can be repurposed for AM/PM use or the user can look outside and see if the sun is out. 
+The Macro_Watch has 11 LEDs. Four LEDs for the Hour (H1 - H4), Six LEDs for the Minute (M1 - M6), and a single Seconds LED for timing purposes. This guide will not go into how to read binary but a good guide can be found [here](http://www.wikihow.com/Read-Binary). Pressing the switch on the front will lit up the LEDs for 10 seconds to allow reading of the time. Holding the switch for 3 seconds will allow setting the current time. The time advances with acceleration so the longer the button is pressed the faster the time will increase. There is no AM/PM indicator on the watch. The SEC LED can be repurposed for AM/PM use or the user can look outside and see if the sun is out. 
 
 The LEDs represent the following numbers. The Seconds LED (SEC on the PCB) blinks every second. 
 
@@ -36,7 +38,13 @@ The idea is to take the LEDs that are lit up and then add up the numbers they re
 ***
 **Theory of operation**
 
-More info about the timing and how the code works will be added soon.
+The code works by using Timer0 on the PIC16F527 to time keep. Using a 32.768kHz oscillator and no timer prescaler (by setting the prescaler to work on the WDT instead of Timer0) the Timer0 ISR happens 32 times a second. The ISR counts 32 times and then adds one second to the current time. The pad labeled RA2 on the MacroWatch is high when ISR starts and goes low when the ISR finishes. 
+
+![ISR time keeping signal](RA2_ISR.png)
+
+The main loop of the code is a small state machine that keeps track what mode the watch is currently in. The first state is the idle state where the watch poles the switch and awaits the users input. Once the button is pressed it moves to the second state which is to calculate how long the watch will display for and then it moves on to state three. State three does the bulk of the work by branching based on how much time the display has been on for and what the user is currently doing. The watch is also driving the LEDs in this state. If the user has held the button for more then 3 seconds the watch goes into state four. State four advances the time. The longer the button is pressed the faster the time advances. Below is a state machine diagram showing how the code branches.
+
+![Macro_Watch State Machine](MF_StateMachine.png) 
 
 ***
 **License Information**
