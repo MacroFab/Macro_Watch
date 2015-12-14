@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="6.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -321,7 +321,7 @@
 </packages>
 <symbols>
 <symbol name="MF_FRAME_DEFAULT">
-<description>&lt;b&gt;Description:&lt;/b &gt;Symbol for adding Meta Data to the Schematic.&lt;br/&gt;</description>
+<description>&lt;b&gt;Description: &lt;/b &gt;Symbol for adding Meta Data to the Schematic.&lt;br/&gt;</description>
 <wire x1="0.072" y1="-25.352" x2="96.592" y2="-25.352" width="0.1016" layer="94"/>
 <wire x1="96.592" y1="-25.352" x2="127.072" y2="-25.352" width="0.1016" layer="94"/>
 <wire x1="127.072" y1="-20.272" x2="127.072" y2="-25.352" width="0.1016" layer="94"/>
@@ -1275,12 +1275,12 @@
 <symbols>
 <symbol name="TACTSW">
 <description>&lt;b&gt;Description:&lt;/b&gt; Tact Switch Symbol.&lt;br/&gt;</description>
-<pin name="P$1" x="-5.08" y="2.54" visible="off" length="short"/>
-<pin name="P$2" x="5.08" y="2.54" visible="off" length="short" rot="R180"/>
-<pin name="P$3" x="-5.08" y="-2.54" visible="off" length="short"/>
-<pin name="P$4" x="5.08" y="-2.54" visible="off" length="short" rot="R180"/>
-<text x="-5.08" y="7.62" size="1.016" layer="95" font="vector" align="top-left">&gt;NAME</text>
-<text x="-5.08" y="5.08" size="1.016" layer="96" font="vector">&gt;VALUE</text>
+<pin name="P$1" x="-2.54" y="2.54" visible="off" length="short"/>
+<pin name="P$2" x="2.54" y="2.54" visible="off" length="short" rot="R180"/>
+<pin name="P$3" x="-2.54" y="-2.54" visible="off" length="short"/>
+<pin name="P$4" x="2.54" y="-2.54" visible="off" length="short" rot="R180"/>
+<text x="-2.54" y="7.62" size="1.016" layer="95" font="vector" align="top-left">&gt;NAME</text>
+<text x="-2.54" y="5.08" size="1.016" layer="96" font="vector">&gt;VALUE</text>
 <wire x1="-2.54" y1="2.54" x2="0" y2="2.54" width="0.1524" layer="94"/>
 <wire x1="0" y1="2.54" x2="2.54" y2="2.54" width="0.1524" layer="94"/>
 <wire x1="2.54" y1="-2.54" x2="0" y2="-2.54" width="0.1524" layer="94"/>
@@ -1395,8 +1395,8 @@
 <wire x1="2.286" y1="4.826" x2="1.778" y2="4.826" width="0.254" layer="94"/>
 <wire x1="1.778" y1="4.826" x2="2.286" y2="4.318" width="0.254" layer="94"/>
 <wire x1="2.286" y1="4.318" x2="2.286" y2="4.826" width="0.254" layer="94"/>
-<text x="-5.08" y="2.54" size="1.016" layer="95" font="vector">&gt;NAME</text>
-<text x="-5.08" y="-2.54" size="1.016" layer="96" font="vector" align="top-left">&gt;VALUE</text>
+<text x="-5.08" y="-2.54" size="1.016" layer="95" font="vector" align="top-left">&gt;NAME</text>
+<text x="-5.08" y="-5.08" size="1.016" layer="96" font="vector">&gt;VALUE</text>
 <pin name="ANODE" x="-5.08" y="0" visible="off" length="middle" direction="pwr"/>
 <pin name="CATHODE" x="5.08" y="0" visible="off" length="middle" direction="pwr" rot="R180"/>
 </symbol>
@@ -4286,9 +4286,14 @@
 </library>
 <library name="PP_Connectors">
 <packages>
+<package name="ROUND_TP">
+<smd name="P$1" x="0" y="0" dx="1" dy="1" layer="1" roundness="100" cream="no"/>
+<circle x="0" y="0" radius="0.7" width="0.08" layer="21"/>
+<text x="1.27" y="0" size="0.8128" layer="21" font="vector" ratio="16">&gt;NAME</text>
+</package>
 <package name="KEYSTONE_5015">
 <smd name="P$1" x="0" y="0" dx="3.4" dy="1.8" layer="1"/>
-<text x="2.29" y="0.5" size="0.8128" layer="25" font="vector">&gt;NAME</text>
+<text x="2.29" y="0.5" size="0.8128" layer="25" font="vector" ratio="16">&gt;NAME</text>
 <wire x1="-2" y1="1.25" x2="-2" y2="-1.25" width="0.127" layer="21"/>
 <wire x1="-2" y1="-1.25" x2="2" y2="-1.25" width="0.127" layer="21"/>
 <wire x1="2" y1="-1.25" x2="2" y2="1.25" width="0.127" layer="21"/>
@@ -4297,12 +4302,7 @@
 <package name="KEYSTONE_5115-5119">
 <pad name="P$1" x="0" y="0" drill="1.3"/>
 <circle x="0" y="0" radius="2.54" width="0.127" layer="21"/>
-<text x="2.54" y="1.27" size="0.8128" layer="25" font="vector">&gt;NAME</text>
-</package>
-<package name="ROUND_TP">
-<smd name="P$1" x="0" y="0" dx="1" dy="1" layer="1" roundness="100" cream="no"/>
-<circle x="0" y="0" radius="0.7" width="0.08" layer="21"/>
-<text x="1.27" y="0" size="0.8128" layer="21" font="vector" ratio="16">&gt;NAME</text>
+<text x="2.54" y="1.27" size="0.8128" layer="25" font="vector" ratio="16">&gt;NAME</text>
 </package>
 </packages>
 <symbols>
@@ -4320,7 +4320,7 @@
 <gate name="G$1" symbol="TEST_POINT_SINGLE" x="0" y="0"/>
 </gates>
 <devices>
-<device name="KEYSTONE_5015" package="KEYSTONE_5015">
+<device name="_KEYSTONE_5015" package="KEYSTONE_5015">
 <connects>
 <connect gate="G$1" pin="P$1" pad="P$1"/>
 </connects>
@@ -4328,7 +4328,7 @@
 <technology name=""/>
 </technologies>
 </device>
-<device name="KEYSTONE_5115-5119" package="KEYSTONE_5115-5119">
+<device name="_KEYSTONE_5115-5119" package="KEYSTONE_5115-5119">
 <connects>
 <connect gate="G$1" pin="P$1" pad="P$1"/>
 </connects>
@@ -4336,7 +4336,7 @@
 <technology name=""/>
 </technologies>
 </device>
-<device name="ROUND_1MM" package="ROUND_TP">
+<device name="_ROUND_1MM" package="ROUND_TP">
 <connects>
 <connect gate="G$1" pin="P$1" pad="P$1"/>
 </connects>
@@ -4396,7 +4396,7 @@
 <part name="FID3" library="MF_Aesthetics" deviceset="FIDUCIAL" device="_0.5MM"/>
 <part name="FID4" library="MF_Aesthetics" deviceset="FIDUCIAL" device="_0.5MM"/>
 <part name="U$1" library="PP_Aesthetics" deviceset="MF_LOGO" device="LOGO_SMALL"/>
-<part name="RA2" library="PP_Connectors" deviceset="TEST_POINT_SINGLE" device="ROUND_1MM" value="N/P"/>
+<part name="RA2" library="PP_Connectors" deviceset="TEST_POINT_SINGLE" device="_ROUND_1MM" value="N/P"/>
 </parts>
 <sheets>
 <sheet>
@@ -4492,7 +4492,7 @@
 </segment>
 <segment>
 <pinref part="SW1" gate="G$1" pin="P$4"/>
-<wire x1="-12.7" y1="129.54" x2="-15.24" y2="129.54" width="0.1524" layer="91"/>
+<wire x1="-12.7" y1="129.54" x2="-17.78" y2="129.54" width="0.1524" layer="91"/>
 <wire x1="-12.7" y1="127" x2="-12.7" y2="129.54" width="0.1524" layer="91"/>
 <wire x1="-40.64" y1="127" x2="-12.7" y2="127" width="0.1524" layer="91"/>
 <label x="-40.64" y="127" size="1.27" layer="95" font="vector"/>
@@ -4707,7 +4707,7 @@
 </segment>
 <segment>
 <pinref part="SW1" gate="G$1" pin="P$1"/>
-<wire x1="-25.4" y1="134.62" x2="-40.64" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="-22.86" y1="134.62" x2="-40.64" y2="134.62" width="0.1524" layer="91"/>
 <label x="-40.64" y="134.62" size="1.27" layer="95" font="vector"/>
 </segment>
 </net>
@@ -4789,7 +4789,7 @@
 <segment>
 <pinref part="SW1" gate="G$1" pin="P$2"/>
 <pinref part="R1" gate="G$1" pin="P$1"/>
-<wire x1="-15.24" y1="134.62" x2="-7.62" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="-17.78" y1="134.62" x2="-7.62" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="-7.62" y1="134.62" x2="-7.62" y2="147.32" width="0.1524" layer="91"/>
 <wire x1="-7.62" y1="147.32" x2="-17.78" y2="147.32" width="0.1524" layer="91"/>
 </segment>
