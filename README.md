@@ -1,3 +1,5 @@
+![MF_ED_Logo](MacroFab_ED_600px.png)
+***
 ###Macro_Watch
 ***
 **Low cost, binary watch based off the PIC16F527 MCU for promotional purposes at MacroFab, INC.**
